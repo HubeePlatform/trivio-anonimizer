@@ -27,6 +27,8 @@ function renderUI() {
   statusEl.textContent = state.enabled ? '✓ Modo anonimato ativo' : 'Desativado';
   statusEl.className = `status${state.enabled ? ' active' : ''}`;
 
+  document.getElementById('btn-export').disabled = state.selectors.length === 0;
+
   if (state.selectors.length === 0) {
     list.innerHTML = '<div class="empty-state">Nenhum elemento selecionado</div>';
     return;
@@ -61,6 +63,12 @@ function renderUI() {
   list.querySelectorAll('.btn-toggle').forEach(btn => {
     btn.addEventListener('click', () => toggleSelector(btn.dataset.id));
   });
+
+  // Exportar / Importar
+  document.getElementById('btn-export').addEventListener('click', exportSelectors);
+  document.getElementById('btn-import').addEventListener('click', () =>
+    document.getElementById('file-import').click());
+  document.getElementById('file-import').addEventListener('change', importSelectors);
 
   // Hover no item → destaca o elemento na página
   list.querySelectorAll('.selector-item').forEach(item => {
@@ -108,7 +116,7 @@ function setupListeners() {
   document.getElementById('btn-picker').addEventListener('click', async () => {
     const sent = await sendToContent({ action: 'startPicker' });
     if (!sent) {
-      showError('Abra a página app.triv.io primeiro.');
+      showError('Navegue até uma página primeiro.');
       return;
     }
     window.close();
@@ -192,6 +200,60 @@ function showError(msg) {
   btn.textContent = msg;
   btn.disabled = true;
   setTimeout(() => { btn.innerHTML = orig; btn.disabled = false; }, 3000);
+}
+
+// ── Export / Import ───────────────────────────────────────────────
+
+function exportSelectors() {
+  const payload = {
+    version: '1.1',
+    selectors: state.selectors,
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = 'anonimizador-seletores.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+async function importSelectors(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  e.target.value = '';
+
+  const text = await file.text().catch(() => null);
+  if (!text) return showImportMsg('Erro ao ler arquivo.', true);
+
+  let imported;
+  try {
+    const data = JSON.parse(text);
+    imported = Array.isArray(data.selectors) ? data.selectors : data;
+    if (!Array.isArray(imported)) throw new Error();
+    imported = imported.filter(s => s && typeof s.selector === 'string');
+  } catch {
+    return showImportMsg('Arquivo inválido.', true);
+  }
+
+  // Mescla: adiciona apenas seletores ainda não existentes
+  const existing = new Set(state.selectors.map(s => s.selector));
+  const fresh    = imported.filter(s => !existing.has(s.selector));
+
+  state.selectors = [...state.selectors, ...fresh];
+  await chrome.storage.local.set({ [KEY_SELECTORS]: state.selectors });
+  sendToContent({ action: 'updateSelectors', selectors: state.selectors });
+  renderUI();
+  showImportMsg(`${fresh.length} seletor${fresh.length !== 1 ? 'es' : ''} importado${fresh.length !== 1 ? 's' : ''}.`);
+}
+
+let importMsgTimer = null;
+function showImportMsg(msg, error = false) {
+  const el = document.getElementById('import-feedback');
+  el.textContent  = msg;
+  el.className    = `import-feedback${error ? ' error' : ''}`;
+  clearTimeout(importMsgTimer);
+  importMsgTimer  = setTimeout(() => { el.textContent = ''; }, 3000);
 }
 
 function esc(str) {

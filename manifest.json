@@ -1,17 +1,17 @@
 {
   "manifest_version": 3,
-  "name": "Trivio Anonimizador",
-  "version": "1.0.0",
-  "description": "Oculta dados sensíveis no Trivio para gravação de vídeos e apresentações",
+  "name": "Anonimizador",
+  "version": "1.1.0",
+  "description": "Oculta dados sensíveis em qualquer site para gravação de vídeos e apresentações",
   "permissions": ["storage", "tabs"],
-  "host_permissions": ["https://app.triv.io/*"],
+  "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Trivio Anonimizador"
+    "default_title": "Anonimizador"
   },
   "content_scripts": [
     {
-      "matches": ["https://app.triv.io/*"],
+      "matches": ["<all_urls>"],
       "js": ["content.js"],
       "css": ["content.css"],
       "run_at": "document_idle",

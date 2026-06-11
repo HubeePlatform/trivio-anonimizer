@@ -258,6 +258,48 @@ h1 {
   min-width: 0;
 }
 
+/* ── Export / Import ───────────────────────────────────────────── */
+.io-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #313244;
+}
+
+.btn-io {
+  background: #313244;
+  border: none;
+  color: #cdd6f4;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.btn-io:hover:not(:disabled) {
+  background: #45475a;
+}
+
+.btn-io:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.import-feedback {
+  font-size: 10px;
+  color: #a6e3a1;
+  flex: 1;
+  text-align: right;
+}
+
+.import-feedback.error {
+  color: #f38ba8;
+}
+
 /* ── Blur control ──────────────────────────────────────────────── */
 .blur-row {
   display: flex;
