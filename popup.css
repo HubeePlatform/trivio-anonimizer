@@ -1,0 +1,358 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  width: 320px;
+}
+
+.container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Header ────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo {
+  font-size: 20px;
+}
+
+h1 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #cdd6f4;
+}
+
+/* ── Toggle ────────────────────────────────────────────── */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 24px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #45475a;
+  border-radius: 24px;
+  transition: background 0.2s;
+}
+
+.slider::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.toggle-switch input:checked + .slider {
+  background: #89b4fa;
+}
+
+.toggle-switch input:checked + .slider::before {
+  transform: translateX(18px);
+}
+
+/* ── Status ────────────────────────────────────────────── */
+.status {
+  font-size: 12px;
+  color: #6c7086;
+  padding: 6px 10px;
+  background: #181825;
+  border-radius: 6px;
+  text-align: center;
+  border: 1px solid #313244;
+}
+
+.status.active {
+  color: #a6e3a1;
+  background: rgba(166, 227, 161, 0.08);
+  border-color: rgba(166, 227, 161, 0.2);
+}
+
+/* ── Buttons ───────────────────────────────────────────── */
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 16px;
+  background: #89b4fa;
+  color: #1e1e2e;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #74c7ec;
+}
+
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-icon {
+  font-size: 15px;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: #6c7086;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.btn-link:hover {
+  color: #f38ba8;
+}
+
+.list-actions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.btn-list-action {
+  background: #313244;
+  border: none;
+  color: #cdd6f4;
+  font-size: 10px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.btn-list-action:hover {
+  background: #45475a;
+}
+
+.btn-list-action.danger {
+  color: #f38ba8;
+}
+
+.btn-list-action.danger:hover {
+  background: rgba(243, 139, 168, 0.15);
+}
+
+.btn-list-action.confirming {
+  background: rgba(243, 139, 168, 0.2);
+  color: #f38ba8;
+  font-weight: 600;
+}
+
+/* ── Selectors list ────────────────────────────────────── */
+.selectors-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.selectors-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #6c7086;
+}
+
+.selectors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.selectors-list::-webkit-scrollbar {
+  width: 4px;
+}
+.selectors-list::-webkit-scrollbar-track { background: transparent; }
+.selectors-list::-webkit-scrollbar-thumb {
+  background: #45475a;
+  border-radius: 4px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #45475a;
+  font-size: 12px;
+  padding: 18px;
+  border: 1px dashed #313244;
+  border-radius: 6px;
+}
+
+.selector-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 8px 10px;
+  background: #181825;
+  border-radius: 6px;
+  border: 1px solid #313244;
+  transition: border-color 0.15s;
+}
+
+.selector-item:hover {
+  border-color: #45475a;
+}
+
+.selector-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.selector-info {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Blur control ──────────────────────────────────────────────── */
+.blur-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 7px;
+  padding-top: 7px;
+  border-top: 1px solid #313244;
+}
+
+.blur-label {
+  font-size: 10px;
+  color: #6c7086;
+  flex-shrink: 0;
+  width: 26px;
+}
+
+.blur-slider {
+  flex: 1;
+  accent-color: #89b4fa;
+  cursor: pointer;
+  height: 4px;
+}
+
+.blur-value {
+  font-size: 10px;
+  font-family: 'Courier New', monospace;
+  color: #89b4fa;
+  flex-shrink: 0;
+  width: 28px;
+  text-align: right;
+}
+
+.selector-label {
+  font-size: 12px;
+  color: #cdd6f4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.selector-code {
+  font-size: 10px;
+  color: #6c7086;
+  font-family: 'Courier New', monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+.btn-remove {
+  background: none;
+  border: none;
+  color: #6c7086;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  flex-shrink: 0;
+  line-height: 1;
+  transition: color 0.15s, background 0.15s;
+}
+
+.btn-remove:hover {
+  color: #f38ba8;
+  background: rgba(243, 139, 168, 0.1);
+}
+
+.btn-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 5px;
+  border-radius: 4px;
+  font-size: 13px;
+  flex-shrink: 0;
+  line-height: 1;
+  color: #45475a;
+  transition: color 0.15s, background 0.15s;
+}
+
+.btn-toggle.active {
+  color: #89b4fa;
+}
+
+.btn-toggle:hover {
+  background: rgba(137, 180, 250, 0.1);
+}
+
+/* Item desativado: aparência esmaecida */
+.selector-item.is-disabled {
+  opacity: 0.45;
+}
+
+.selector-item.is-disabled .blur-row {
+  pointer-events: none;
+}

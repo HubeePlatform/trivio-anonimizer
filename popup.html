@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Trivio Anonimizador</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-title">
+        <span class="logo">🔒</span>
+        <h1>Anonimizador</h1>
+      </div>
+      <label class="toggle-switch" title="Ativar/Desativar">
+        <input type="checkbox" id="toggle-enabled">
+        <span class="slider"></span>
+      </label>
+    </header>
+
+    <div id="status-text" class="status">Desativado</div>
+
+    <div class="actions">
+      <button id="btn-picker" class="btn-primary">
+        <span class="btn-icon">🎯</span>
+        Selecionar Elemento
+      </button>
+    </div>
+
+    <div class="selectors-section">
+      <div class="selectors-header">
+        <span class="section-title">Elementos Ocultos</span>
+        <div class="list-actions">
+          <button id="btn-enable-all"  class="btn-list-action" title="Ativar todos">● Todos</button>
+          <button id="btn-disable-all" class="btn-list-action" title="Desativar todos">○ Todos</button>
+          <button id="btn-clear-all"   class="btn-list-action danger">Limpar</button>
+        </div>
+      </div>
+      <div id="selectors-list" class="selectors-list">
+        <div class="empty-state">Nenhum elemento selecionado</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+/* ── Elemento oculto ─────────────────────────────────────────────── */
+/* --trivio-blur pode ser sobrescrito por JS para blur por elemento   */
+.trivio-hidden {
+  filter: blur(var(--trivio-blur, 7px)) !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+/* ── Destaque temporário (hover na lista do popup) ───────────────── */
+.trivio-temp-hl {
+  outline: 3px solid #f9e2af !important;
+  outline-offset: 3px !important;
+  position: relative !important;
+  z-index: 9998 !important;
+}
+
+/* ── Modo picker: cursor ─────────────────────────────────────────── */
+body.trivio-picker-active,
+body.trivio-picker-active * {
+  cursor: crosshair !important;
+}
+
+body.trivio-picker-active #trivio-picker-banner,
+body.trivio-picker-active #trivio-picker-banner * {
+  cursor: default !important;
+}
+
+/* ── Elemento destacado no hover do picker ───────────────────────── */
+.trivio-highlight {
+  outline: 2px solid #89b4fa !important;
+  outline-offset: 1px !important;
+  background-color: rgba(137, 180, 250, 0.12) !important;
+  position: relative !important;
+}
+
+/* Coluna de tabela: linha superior contínua para indicar seleção vertical */
+td.trivio-highlight,
+th.trivio-highlight {
+  outline: none !important;
+  background-color: rgba(137, 180, 250, 0.14) !important;
+  box-shadow: inset 2px 0 0 #89b4fa, inset -2px 0 0 #89b4fa !important;
+}
+
+td.trivio-highlight:first-child,
+th.trivio-highlight:first-child {
+  box-shadow: inset 2px 0 0 #89b4fa, inset -2px 0 0 #89b4fa,
+              inset 0 2px 0 #89b4fa !important;
+}
+
+/* ── Banner do picker ────────────────────────────────────────────── */
+#trivio-picker-banner {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 2147483647 !important;
+  background: #1e1e2e !important;
+  color: #cdd6f4 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 10px 20px !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 13px !important;
+  border-bottom: 2px solid #89b4fa !important;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.6) !important;
+  line-height: 1.4 !important;
+}
+
+#trivio-cancel-btn {
+  background: rgba(243, 139, 168, 0.12) !important;
+  border: 1px solid rgba(243, 139, 168, 0.35) !important;
+  color: #f38ba8 !important;
+  padding: 5px 14px !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  font-size: 12px !important;
+  font-family: inherit !important;
+  transition: background 0.15s !important;
+  white-space: nowrap !important;
+}
+
+#trivio-cancel-btn:hover {
+  background: rgba(243, 139, 168, 0.25) !important;
+}
+
+/* ── Toast de confirmação ────────────────────────────────────────── */
+.trivio-toast {
+  position: fixed !important;
+  bottom: 24px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: #a6e3a1 !important;
+  color: #1e1e2e !important;
+  padding: 8px 18px !important;
+  border-radius: 8px !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  z-index: 2147483646 !important;
+  pointer-events: none !important;
+  animation: trivio-in 0.2s ease, trivio-out 0.3s ease 1.9s forwards !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+@keyframes trivio-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes trivio-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
