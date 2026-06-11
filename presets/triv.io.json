@@ -1,0 +1,42 @@
+{
+  "version": "1.1",
+  "selectors": [
+    {
+      "count": 1,
+      "disabled": false,
+      "id": "mq5og7ujdxkb3",
+      "label": "Trivio CRM",
+      "selector": "#menu-icon-profile"
+    },
+    {
+      "count": 32,
+      "disabled": false,
+      "id": "mq5oh0vtfnl3b",
+      "label": "Coluna: Nome",
+      "selector": "table.MuiTable-root.MuiTable-stickyHeader.material-table.is-loading-false.css-lkld8c td:nth-child(1), table.MuiTable-root.MuiTable-stickyHeader.material-table.is-loading-false.css-lkld8c th:nth-child(1)"
+    },
+    {
+      "count": 31,
+      "disabled": false,
+      "id": "mq5oh9x8pyk9y",
+      "label": "Coluna: Celular / e-mail",
+      "selector": "table.MuiTable-root.MuiTable-stickyHeader.material-table.is-loading-false.css-lkld8c td:nth-child(3), table.MuiTable-root.MuiTable-stickyHeader.material-table.is-loading-false.css-lkld8c th:nth-child(3)"
+    },
+    {
+      "blur": 12,
+      "count": 1,
+      "disabled": false,
+      "id": "mq5oiak3c1cr1",
+      "label": "Imagem da oferta (preview)",
+      "selector": "div#root > div:nth-child(3) > main:nth-child(2) > div:nth-child(1) > div:nth-child(2) > form:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > img:nth-child(1)"
+    },
+    {
+      "blur": 7,
+      "count": 2,
+      "disabled": false,
+      "id": "mq83xj26z6s80",
+      "label": "Lojas permitidas",
+      "selector": "div.MuiInputBase-root.MuiOutlinedInput-root.MuiAutocomplete-inputRoot.MuiInputBase-fullWidth.MuiInputBase-formControl.MuiInputBase-adornedStart.MuiOutlinedInput-adornedStart.MuiInputBase-adornedEnd.MuiOutlinedInput-adornedEnd"
+    }
+  ]
+}
