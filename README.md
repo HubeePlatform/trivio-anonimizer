@@ -1,17 +1,17 @@
-# Trivio Anonimizador
+# Anonimizador
 
-Extensão Chrome para ocultar dados sensíveis no [Trivio CRM](https://app.triv.io) durante gravações de vídeo e apresentações.
+Extensão Chrome para ocultar dados sensíveis em qualquer site durante gravações de vídeo e apresentações.
 
 ## Funcionalidades
 
 - **Picker de elementos** — clique em qualquer elemento da página para ocultá-lo
-- **Seleção de coluna** — ao clicar em uma célula de tabela, oculta a coluna inteira
-- **CPF / CNPJ automático** — detecta e oculta automaticamente qualquer CPF ou CNPJ visível na página
+- **Seleção de coluna** — ao clicar em uma célula de tabela, oculta a coluna inteira automaticamente
+- **CPF / CNPJ automático** — detecta e oculta qualquer CPF ou CNPJ visível na página
 - **Blur configurável por elemento** — slider de intensidade de 2px a 30px para cada item
 - **Ativar / Desativar por elemento** — pause a ocultação de um item sem removê-lo da lista
 - **Ativar / Desativar todos** — controle global de todos os elementos de uma vez
 - **Destaque ao passar o mouse** — passe o mouse sobre um item da lista para ver qual elemento corresponde na página
-- **Persistência** — configurações salvas no `chrome.storage`, sobrevivem a recarregamentos de página
+- **Persistência** — configurações salvas localmente, sobrevivem a recarregamentos de página
 
 ## Instalação
 
@@ -22,7 +22,7 @@ Extensão Chrome para ocultar dados sensíveis no [Trivio CRM](https://app.triv.
 
 ## Como usar
 
-1. Navegue até `app.triv.io`
+1. Navegue até qualquer site
 2. Clique no ícone 🔒 da extensão na barra do Chrome
 3. Ligue o toggle para ativar o modo anonimato
 4. Clique em **Selecionar Elemento** e clique sobre qualquer dado sensível na página
@@ -31,8 +31,8 @@ Extensão Chrome para ocultar dados sensíveis no [Trivio CRM](https://app.triv.
 
 ## Estrutura
 
-```
-trivio_anonimizer/
+```text
+anonimizador/
 ├── manifest.json    # Manifest V3
 ├── content.js       # Lógica de ocultação, picker e detecção de padrões
 ├── content.css      # Estilos de blur e picker
