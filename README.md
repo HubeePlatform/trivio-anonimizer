@@ -11,6 +11,7 @@ Extensão Chrome para ocultar dados sensíveis em qualquer site durante gravaç�
 - **Ativar / Desativar por elemento** — pause a ocultação de um item sem removê-lo da lista
 - **Ativar / Desativar todos** — controle global de todos os elementos de uma vez
 - **Destaque ao passar o mouse** — passe o mouse sobre um item da lista para ver qual elemento corresponde na página
+- **Exportar / Importar seletores** — compartilhe suas configurações com outros usuários via arquivo JSON
 - **Persistência** — configurações salvas localmente, sobrevivem a recarregamentos de página
 
 ## Instalação
@@ -29,16 +30,36 @@ Extensão Chrome para ocultar dados sensíveis em qualquer site durante gravaç�
 5. Para colunas de tabela: o picker detecta automaticamente e oculta a coluna inteira
 6. CPF e CNPJ são ocultados automaticamente ao ativar a extensão
 
+## Exportar e importar seletores
+
+É possível salvar e compartilhar os seletores configurados como um arquivo JSON.
+
+**Exportar:**
+
+- No popup da extensão, clique em **📤 Exportar**
+- Um arquivo `anonimizador-seletores.json` será baixado com todas as suas configurações
+
+**Importar:**
+
+- Clique em **📥 Importar** e selecione um arquivo `.json` exportado anteriormente
+- Os seletores serão mesclados com os existentes (sem duplicatas)
+
+### Presets prontos
+
+A pasta [`presets/`](presets/) contém arquivos JSON prontos para importar em sistemas específicos.
+Para contribuir com um preset, exporte seus seletores, salve o arquivo em `presets/` e abra um Pull Request.
+
 ## Estrutura
 
 ```text
 anonimizador/
-├── manifest.json    # Manifest V3
-├── content.js       # Lógica de ocultação, picker e detecção de padrões
-├── content.css      # Estilos de blur e picker
-├── popup.html       # Interface do popup
-├── popup.js         # Lógica do popup
-└── popup.css        # Estilos do popup
+├── manifest.json       # Manifest V3
+├── content.js          # Lógica de ocultação, picker e detecção de padrões
+├── content.css         # Estilos de blur e picker
+├── popup.html          # Interface do popup
+├── popup.js            # Lógica do popup
+├── popup.css           # Estilos do popup
+└── presets/            # Arquivos JSON de seletores prontos para importar
 ```
 
 ## Tecnologias
